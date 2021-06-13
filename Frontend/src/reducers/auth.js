@@ -7,14 +7,13 @@ import {
 
 const initialState = {
   token: localStorage.getItem("token"),
-  isAuthenticated: null,
+  isAuthenticated: false,
   loading: true,
   user: null,
 };
 
 export default function (state = initialState, action) {
   const { type, payload } = action;
-
   switch (type) {
     case LOGIN_SUCCESS:
     case REGISTER_SUCCESS:

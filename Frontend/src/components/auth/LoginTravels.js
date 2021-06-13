@@ -2,9 +2,9 @@ import React, { Fragment, useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { login } from "../../actions/auth";
+import { loginTravels } from "../../actions/auth";
 
-const Login = ({ login, isAuthenticated }) => {
+const LoginTravels = ({ loginTravels, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -17,7 +17,7 @@ const Login = ({ login, isAuthenticated }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    login(email, password);
+    loginTravels(email, password);
   };
 
   // Redirect if logged in
@@ -66,8 +66,8 @@ const Login = ({ login, isAuthenticated }) => {
   );
 };
 
-Login.propTypes = {
-  login: PropTypes.func.isRequired,
+LoginTravels.propTypes = {
+  loginTravels: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
 };
 
@@ -75,4 +75,4 @@ const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps, { login })(Login);
+export default connect(mapStateToProps, { loginTravels })(LoginTravels);
