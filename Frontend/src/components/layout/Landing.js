@@ -1,6 +1,12 @@
 import React, { useState } from "react";
+import { searchbuses } from "../../actions/bus";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+import PropTypes from "prop-types";
+import { setAlert } from "../../actions/alert";
+import { withRouter } from "react-router-dom";
 
-const Landing = () => {
+const Landing = ({ searchbuses, history }) => {
   const [formData, setFormData] = useState({
     from: "",
     to: "",
@@ -14,8 +20,10 @@ const Landing = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    searchbuses(formData, history);
     console.log("Success");
   };
+
   return (
     <section className="landing">
       <div className="dark-overlay">
@@ -36,7 +44,7 @@ const Landing = () => {
               <input
                 type="text"
                 placeholder="Enter City"
-                name="password"
+                name="to"
                 value={to}
                 onChange={(e) => onChange(e)}
               />
@@ -57,5 +65,15 @@ const Landing = () => {
     </section>
   );
 };
+Landing.propTypes = {
+  setAlert: PropTypes.func.isRequired,
+  searchbuses: PropTypes.func.isRequired,
+};
 
-export default Landing;
+const mapStateToProps = (state) => ({
+  bus: state.bus,
+  // alert: state.alert,
+});
+export default connect(mapStateToProps, { setAlert, searchbuses })(
+  withRouter(Landing)
+);

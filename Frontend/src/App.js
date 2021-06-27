@@ -13,12 +13,16 @@ import "./App.css";
 import { Provider } from "react-redux";
 import store from "./store";
 import LandingMain from "./components/layout/LandingMain";
+// import Landingtravels from "./components/layout/Landingtravels";
+import Buses from "./components/buses/Buses";
+import AddBus from "./components/buses/AddBus";
+import SearchBus from "./components/buses/SearchBus";
 
-window.addEventListener("popstate", (event) => {
-  console.log(
-    "location: " + document.location + ", state: " + JSON.stringify(event.state)
-  );
-});
+// window.addEventListener("popstate", (event) => {
+//   console.log(
+//     "location: " + document.location + ", state: " + JSON.stringify(event.state)
+//   );
+// });
 const App = () => (
   <Provider store={store}>
     <Router>
@@ -31,9 +35,13 @@ const App = () => (
           <Route exact path="/registerTravels" component={RegisterTravels} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/loginTravels" component={LoginTravels} />
+          {/* <Route exact path="/travelsPage" component={Buses} /> */}
         </Switch>
         <Switch>
           <PrivateRoute exact path="/landing" component={Landing} />
+          <PrivateRoute exact path="/travelsPage" component={Buses} />
+          <PrivateRoute exact path="/addbus" component={AddBus} />
+          <PrivateRoute exact path="/buses" component={SearchBus} />
         </Switch>
       </Fragment>
     </Router>

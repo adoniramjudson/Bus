@@ -5,6 +5,8 @@ import {
   REGISTER_FAIL,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
+  LOGIN_TRAVEL_SUCCESS,
+  LOGIN_TRAVEL_FAIL,
 } from "./types";
 
 // Register User
@@ -119,9 +121,8 @@ export const loginTravels = (email, password) => async (dispatch) => {
   const body = JSON.stringify({ email, password });
   try {
     const res = await axios.post("/api/travelagency/login", body, config);
-
     dispatch({
-      type: LOGIN_SUCCESS,
+      type: LOGIN_TRAVEL_SUCCESS,
       payload: res.data,
     });
 
@@ -135,7 +136,7 @@ export const loginTravels = (email, password) => async (dispatch) => {
     }
 
     dispatch({
-      type: LOGIN_FAIL,
+      type: LOGIN_TRAVEL_FAIL,
     });
   }
 };

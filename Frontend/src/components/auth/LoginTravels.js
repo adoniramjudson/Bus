@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { loginTravels } from "../../actions/auth";
@@ -12,6 +12,8 @@ const LoginTravels = ({ loginTravels, isAuthenticated }) => {
 
   const { email, password } = formData;
 
+  // const history = useHistory();
+
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -23,7 +25,8 @@ const LoginTravels = ({ loginTravels, isAuthenticated }) => {
   // Redirect if logged in
   console.log(isAuthenticated);
   if (isAuthenticated) {
-    return <Redirect to="/landing" />;
+    return <Redirect to="/travelsPage" />;
+    // return history.push("/landingtravels");
   }
 
   return (
