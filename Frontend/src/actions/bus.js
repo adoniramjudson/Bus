@@ -50,6 +50,7 @@ export const searchbuses = (formData, history) => async (dispatch) => {
       payload: res.data,
     });
     console.log("ffff");
+    // localStorage.setItem("type", value);
     history.push("/buses");
   } catch (err) {
     console.log(err);

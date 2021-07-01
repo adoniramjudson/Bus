@@ -14,8 +14,14 @@ const SearchBus = ({
   },
 }) => {
   useEffect(() => {
-    searchbuses();
-  }, []);
+    let bus = JSON.parse(localStorage.getItem("formData"));
+    console.log(bus);
+    if (bus) {
+      searchbuses(bus.formData);
+    } else {
+      searchbuses();
+    }
+  }, [searchbuses]);
 
   return (
     <div>
@@ -26,7 +32,7 @@ const SearchBus = ({
           <div className="landing-inner">
             <h1>Available Buses</h1>
             <div>
-              {buses.length > 0 ? (
+              {buses && buses.length > 0 ? (
                 buses.map((bus) => <BusItem key={bus.id} bus={bus} />)
               ) : (
                 <h4> No buses available</h4>

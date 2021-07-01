@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 
 const LandingMain = () => {
+  // onclick = (value) => {
+  //   console.log(value);
+  //   localStorage.setItem("loginType", value);
+  //};
   return (
     <section className="landing">
       <div className="dark-overlay">
@@ -13,6 +17,7 @@ const LandingMain = () => {
             <Link to="/login">
               <input
                 type="button"
+                // onClick={(e) => onclick("customer")}
                 className="btn btn-primary"
                 value="Customer"
               />
@@ -20,6 +25,7 @@ const LandingMain = () => {
             <Link to="/loginTravels">
               <input
                 type="button"
+                // onClick={onclick("travel")}
                 className="btn btn-primary"
                 value="Travel Agency"
               />

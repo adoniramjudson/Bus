@@ -14,7 +14,7 @@ const Landing = ({ searchbuses, history }) => {
   });
 
   const { from, to, date } = formData;
-
+  localStorage.setItem("formData", JSON.stringify({ formData }));
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
